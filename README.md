@@ -44,7 +44,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 ## 🏗️ Model ve DbContext Tanımlama
 
-İlk olarak **Models** klasörü içerisine **Todo.cs** adlı bir model ekleyelim: (Veribanı Tablosu olarak da düşünebilirsin.)
+İlk olarak **Models** klasörü içerisine **Todo.cs** adlı bir model ekleyelim: (Veritabanı Tablosu olarak da düşünebilirsin.)
 
 ```csharp
 namespace TodoAppEntityFramework.Models
