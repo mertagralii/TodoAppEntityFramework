@@ -8,7 +8,7 @@ namespace TodoAppEntityFramework.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly AppDbContext  _context;
+        private readonly AppDbContext _context;
 
         public HomeController(AppDbContext context)
         {
@@ -22,25 +22,25 @@ namespace TodoAppEntityFramework.Controllers
             return View(todolist);
         }
 
-        public IActionResult Details(int Id) 
+        public IActionResult Details(int Id)
         {
             var details = _context.Todos.Find(Id); // EntityFramework Seçili Id'yi bulma. (SELECT * FROM Todos Where Id=@Id) gibi
 
-            if(details != null)
+            if (details != null)
             {
                 return View(details);
             }
             return RedirectToAction("Index");
         }
         [HttpPost]
-        public IActionResult AddTodo(Todo todo) 
+        public IActionResult AddTodo(Todo todo)
         {
             _context.Todos.Add(todo); // EntityFrameWork Ekleme Ýþlemi
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        public IActionResult DeleteTodo(Todo todo) 
+        public IActionResult DeleteTodo(Todo todo)
         {
             _context.Todos.Remove(todo); // EntityFramework Silme Ýþlemi
             _context.SaveChanges();
@@ -48,18 +48,31 @@ namespace TodoAppEntityFramework.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditTodo(Todo todo) 
+        public IActionResult EditTodo(Todo todo)
         {
-           
-                _context.Todos.Update(todo); // EntityFrameWork Update Ýþlemi
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+
+            _context.Todos.Update(todo); // EntityFrameWork Update Ýþlemi
+            _context.SaveChanges();
+            return RedirectToAction("Index");
 
 
 
         }
 
-      
+        public IActionResult MarkComplete(int id)
+        {
+            //_connection.Execute("UPDATE TBLTodo SET IsApproved = 1 WHERE Id = @id", new { id });
+            //return RedirectToAction("Index");
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult MarkInComplete(int id)
+        {
+            //_connection.Execute("UPDATE TBLTodo SET IsApproved = 0 WHERE Id = @id", new { id });
+            return RedirectToAction("Index");
+        }
+
+
 
 
 
