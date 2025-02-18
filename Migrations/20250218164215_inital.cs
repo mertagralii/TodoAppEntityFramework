@@ -4,7 +4,7 @@
 
 namespace TodoAppEntityFramework.Migrations
 {
-    /// <inheritdoc />
+    /// <inheritdoc /> //.
     public partial class inital : Migration
     {
         /// <inheritdoc />
