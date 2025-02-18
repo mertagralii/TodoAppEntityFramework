@@ -192,26 +192,78 @@ public IActionResult EditTodo(Todo todo)
 
 ---
 
-## 📌 Projeyi Çalıştırma
 
 📌 **Projeyi çalıştırmak için** aşağıdaki adımları takip edin:
 
-1️⃣ **Gerekli NuGet paketlerini yükleyin**
+1️⃣ **Projeyi Bilgisayarınıza İndirin.**
+2️⃣  **SQL Serverinize Aşağıdaki Veritabanı Scriptini ekleyin :** 
+```sql
+USE [DBEntityFrameWorkTodoList]
+GO
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 19.02.2025 01:56:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Todos]    Script Date: 19.02.2025 01:56:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Todos](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[JobName] [nvarchar](max) NOT NULL,
+	[IsApproved] [bit] NOT NULL,
+ CONSTRAINT [PK_Todos] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20250218164215_inital', N'8.0.13')
+GO
+SET IDENTITY_INSERT [dbo].[Todos] ON 
+GO
+INSERT [dbo].[Todos] ([Id], [JobName], [IsApproved]) VALUES (1, N'8.30''da uyan', 0)
+GO
+INSERT [dbo].[Todos] ([Id], [JobName], [IsApproved]) VALUES (2, N'Duş  Al', 0)
+GO
+INSERT [dbo].[Todos] ([Id], [JobName], [IsApproved]) VALUES (3, N'Kahvaltı Et', 0)
+GO
+INSERT [dbo].[Todos] ([Id], [JobName], [IsApproved]) VALUES (4, N'Plan Hazırla', 1)
+GO
+INSERT [dbo].[Todos] ([Id], [JobName], [IsApproved]) VALUES (5, N'Su İç', 1)
+GO
+INSERT [dbo].[Todos] ([Id], [JobName], [IsApproved]) VALUES (6, N'Kod Yaz', 1)
+GO
+INSERT [dbo].[Todos] ([Id], [JobName], [IsApproved]) VALUES (7, N'Okula git', 1)
+GO
+INSERT [dbo].[Todos] ([Id], [JobName], [IsApproved]) VALUES (8, N'Spora git', 1)
+GO
+INSERT [dbo].[Todos] ([Id], [JobName], [IsApproved]) VALUES (9, N'Yemeklerini ye', 1)
+GO
+INSERT [dbo].[Todos] ([Id], [JobName], [IsApproved]) VALUES (10, N'Ders Çalış', 1)
+GO
+INSERT [dbo].[Todos] ([Id], [JobName], [IsApproved]) VALUES (11, N'23.00''DA Uyu', 1)
+GO
+INSERT [dbo].[Todos] ([Id], [JobName], [IsApproved]) VALUES (15, N'test', 1)
+GO
+SET IDENTITY_INSERT [dbo].[Todos] OFF
+GO
 
-2️⃣ **Migration işlemlerini yapın**
+``` 
+3️⃣ **Appsettings.Json dosyasındaki ConnectionString kısmındaki Veritabanı Adresinizi Kendi Veritabanı adresinize göre düzenleyin.** 
+- **Projeyi Çalıştırın ✅**
 
-```sh
-dotnet ef migrations add InitialCreate
-dotnet ef database update
-```
-
-3️⃣ **Projeyi başlatın**
-
-```sh
-dotnet run
-```
-
----
 
 ## 🚀 Geliştirici Notları
 
