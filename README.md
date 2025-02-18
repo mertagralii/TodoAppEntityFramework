@@ -2,6 +2,8 @@
 
 ## 📌 Proje Açıklaması
 
+Acunmedya Akademi 11. Dönem Genişletilmiş Yazılım Uzmanlığı Eğitimi kapsamında temelden uzmanlığa geçiş sürecinde geliştirdiğim TodoApp uygulamasıdır.
+
 Bu proje, **Entity Framework Core** kullanarak bir **Todo List** uygulaması geliştirmek için oluşturulmuştur. **CRUD (Create, Read, Update, Delete)** işlemleri Entity Framework üzerinden gerçekleştirilmiştir. 
 
 Ayrıca Bu rehberde, Entity Framework Core kullanarak bir ASP.NET Core MVC projesi için temel CRUD (Create, Read, Update, Delete) işlemlerinin nasıl yapılacağını öğreneceksiniz.
