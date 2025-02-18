@@ -7,5 +7,7 @@
         public string JobName { get; set; }
 
         public bool IsApproved { get; set; }
+
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
 }
