@@ -61,14 +61,23 @@ namespace TodoAppEntityFramework.Controllers
 
         public IActionResult MarkComplete(int id)
         {
-            //_connection.Execute("UPDATE TBLTodo SET IsApproved = 1 WHERE Id = @id", new { id });
-            //return RedirectToAction("Index");
-            return RedirectToAction("Index");
+            var todo = _context.Todos.Find(id); // Seçili Id'nin verilerini getir
+            if (todo != null)  // gelen Id verileri todo deðiþkenine gelmiþ ve boþ deðilse
+            {
+                todo.IsApproved = true; // O Id'ye ait verilerin içindeki IsApproved deðerini true yap
+                _context.SaveChanges(); // veritabanýnda yapýlan deðiþikliði kaydet.
+            }
+            return RedirectToAction("Index"); // Anasayfaya geri dön.
         }
 
-        public IActionResult MarkInComplete(int id)
+        public IActionResult MarkInComplete(int id) // Yine ayný iþlem.
         {
-            //_connection.Execute("UPDATE TBLTodo SET IsApproved = 0 WHERE Id = @id", new { id });
+           var todo = _context.Todos.Find(id);
+            if (todo != null) 
+            {
+                todo.IsApproved = false;
+                _context.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
