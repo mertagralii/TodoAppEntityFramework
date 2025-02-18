@@ -16,18 +16,10 @@ namespace TodoAppEntityFramework.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var todolist = _context.Todos.ToList(); // EntityFramework Listeleme yöntemi
+            return View(todolist);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+       
     }
 }
