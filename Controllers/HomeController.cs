@@ -20,6 +20,20 @@ namespace TodoAppEntityFramework.Controllers
             return View(todolist);
         }
 
-       
+        public IActionResult Details(int Id) 
+        {
+            var details = _context.Todos.Find(Id); // EntityFramework Seçili Id'yi bulma. (SELECT * FROM Todos Where Id=@Id) gibi
+
+            if(details != null)
+            {
+                return View(details);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult AddTodo() 
+        {
+            
+        }
     }
 }

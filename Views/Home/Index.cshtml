@@ -41,11 +41,11 @@
                     <div>
                         @if (todo.IsApproved)
                         {
-                            <a href="/home/markincomplete/@todo.Id"><i class="bi bi-check-square-fill"></i></a> @todo.JobName
+                            <a href="/home/markincomplete/@todo.Id"><i class="bi bi-check-square-fill"></i></a> @todo.JobName 
                         }
                         else
                         {
-                            <a href="/home/markcomplete/@todo.Id"><i class="bi bi-square"></i></a> @todo.JobName
+                            <a href="/home/markcomplete/@todo.Id"><i class="bi bi-square"></i></a>  <a href="/home/details/@todo.Id"> @todo.JobName </a>
                         }
                     </div>
                     <div>
