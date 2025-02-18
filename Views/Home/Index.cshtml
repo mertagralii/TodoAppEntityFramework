@@ -1,8 +1,59 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿﻿@model List<Todo>
+@if (ViewBag.ErrorMsg != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @ViewBag.ErrorMsg
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5" style="max-width: 600px;">
+    <h2>Todo List</h2>
+    <form class="d-flex" autocomplete="off" method="post">
+        <input type="text" class="form-control me-2" name="JobName" required placeholder="Yapılacak İş">
+        <button type="submit" class="btn btn-primary"><i class="bi bi-plus-lg"></i></button>
+    </form>
+</div>
+
+<div class="container mt-5" style="max-width: 600px;">
+    <ul class="list-group">
+        @foreach (var todo in Model)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                @if (todo.Id == ViewBag.Id)
+                {
+                    <form action="/home/update" method="post" autocomplete="off" class="flex-grow-1">
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox" name="IsComplete" value="True">
+                                <input type="hidden" name="Id" value="@todo.Id" />
+                            </div>
+                            <input required type="text" class="form-control" name="Task" value="@todo.JobName">
+                            <button class="btn btn-success"><i class="bi bi-floppy"></i></button>
+                            <a class="btn btn-outline-secondary" href="/"><i class="bi bi-x-lg"></i></a>
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    <div>
+                        @if (todo.IsApproved)
+                        {
+                            <a href="/home/markincomplete/@todo.Id"><i class="bi bi-check-square-fill"></i></a> @todo.JobName
+                        }
+                        else
+                        {
+                            <a href="/home/markcomplete/@todo.Id"><i class="bi bi-square"></i></a> @todo.JobName
+                        }
+                    </div>
+                    <div>
+                        <a href="/home/index/@todo.Id" class="btn btn-primary btn-sm me-2"><i class="bi bi-pencil-square"></i></a>
+                        <a href="/home/delete/@todo.Id" class="btn btn-danger btn-sm" onclick="return confirm('Emin misin?')"><i class="bi bi-trash"></i></a>
+                    </div>
+                }
+            </li>
+        }
+
+    </ul>
 </div>
