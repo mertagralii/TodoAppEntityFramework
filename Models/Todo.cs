@@ -8,6 +8,6 @@
 
         public bool IsApproved { get; set; }
 
-        public DateTime CreatedDate { get; set; } = DateTime.Now; // . 
+        public DateTime CreatedDate { get; set; } = DateTime.Now; // .  . 
     }
 }
