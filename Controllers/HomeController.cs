@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TodoAppEntityFramework.Data;
 using TodoAppEntityFramework.Models;
 
@@ -14,9 +15,10 @@ namespace TodoAppEntityFramework.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? Id)
         {
             var todolist = _context.Todos.ToList(); // EntityFramework Listeleme yöntemi
+            ViewBag.Id = Id;
             return View(todolist);
         }
 
@@ -30,10 +32,36 @@ namespace TodoAppEntityFramework.Controllers
             }
             return RedirectToAction("Index");
         }
-
-        public IActionResult AddTodo() 
+        [HttpPost]
+        public IActionResult AddTodo(Todo todo) 
         {
-            
+            _context.Todos.Add(todo); // EntityFrameWork Ekleme Ýþlemi
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
+
+        public IActionResult DeleteTodo(Todo todo) 
+        {
+            _context.Todos.Remove(todo); // EntityFramework Silme Ýþlemi
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult EditTodo(Todo todo) 
+        {
+           
+                _context.Todos.Update(todo); // EntityFrameWork Update Ýþlemi
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+
+
+
+        }
+
+      
+
+
+
     }
 }

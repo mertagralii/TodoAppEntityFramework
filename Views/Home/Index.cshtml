@@ -10,8 +10,8 @@
 
 <div class="container mt-5" style="max-width: 600px;">
     <h2>Todo List</h2>
-    <form class="d-flex" autocomplete="off" method="post">
-        <input type="text" class="form-control me-2" name="JobName" required placeholder="Yapılacak İş">
+    <form action="/Home/AddTodo" class="d-flex" autocomplete="off" method="post">
+        <input  type="text" class="form-control me-2" name="JobName" required placeholder="Yapılacak İş">
         <button type="submit" class="btn btn-primary"><i class="bi bi-plus-lg"></i></button>
     </form>
 </div>
@@ -24,13 +24,13 @@
 
                 @if (todo.Id == ViewBag.Id)
                 {
-                    <form action="/home/update" method="post" autocomplete="off" class="flex-grow-1">
+                    <form action="/home/EditTodo" method="post" autocomplete="off" class="flex-grow-1">
                         <div class="input-group">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox" name="IsComplete" value="True">
+                                <input class="form-check-input mt-0" type="checkbox" name="IsApproved" value="True">
                                 <input type="hidden" name="Id" value="@todo.Id" />
                             </div>
-                            <input required type="text" class="form-control" name="Task" value="@todo.JobName">
+                            <input required type="text" class="form-control" name="JobName" value="@todo.JobName">
                             <button class="btn btn-success"><i class="bi bi-floppy"></i></button>
                             <a class="btn btn-outline-secondary" href="/"><i class="bi bi-x-lg"></i></a>
                         </div>
@@ -50,7 +50,7 @@
                     </div>
                     <div>
                         <a href="/home/index/@todo.Id" class="btn btn-primary btn-sm me-2"><i class="bi bi-pencil-square"></i></a>
-                        <a href="/home/delete/@todo.Id" class="btn btn-danger btn-sm" onclick="return confirm('Emin misin?')"><i class="bi bi-trash"></i></a>
+                        <a href="/home/DeleteTodo/@todo.Id" class="btn btn-danger btn-sm" onclick="return confirm('Emin misin?')"><i class="bi bi-trash"></i></a>
                     </div>
                 }
             </li>
