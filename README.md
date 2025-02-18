@@ -44,7 +44,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 ## 🏗️ Model ve DbContext Tanımlama
 
-İlk olarak **Models** klasörü içerisine **Todo.cs** adlı bir model ekleyelim:
+İlk olarak **Models** klasörü içerisine **Todo.cs** adlı bir model ekleyelim: (Veribanı Tablosu olarak da düşünebilirsin.)
 
 ```csharp
 namespace TodoAppEntityFramework.Models
@@ -85,12 +85,15 @@ namespace TodoAppEntityFramework.Data
 
 ```sh
 # Entity Framework CLI aracını yükleyin
+
  dotnet tool install --global dotnet-ef
 
 # İlk Migration'ı oluşturun
+
  dotnet ef migrations add InitialCreate
 
 # Veritabanını güncelleyin
+
  dotnet ef database update
 ```
 
