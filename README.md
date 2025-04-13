@@ -16,10 +16,10 @@ Projemizde **Entity Framework Core** kullanabilmek için aşağıdaki **NuGet** 
 
 📌 **Gerekli NuGet Paketleri:**
 
-- `Microsoft.EntityFrameworkCore`
+
 - `Microsoft.EntityFrameworkCore.Design`
 - `Microsoft.EntityFrameworkCore.SqlServer`
-- `Microsoft.EntityFrameworkCore.Tools`
+
 
 > **⚠️ NOT:** Tüm paketlerin **aynı sürümde** olması gerekiyor!
 
